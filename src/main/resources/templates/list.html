@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Note List</title>
+</head>
+<body>
+<h1 th:text="'Notes count: ' + ${notes.size()}"></h1>
+
+<form th:action="@{/note/list}" method="post">
+    <div>
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" />
+    </div>
+
+    <div style="margin-top: 20px;">
+        <label for="content">Content:</label>
+        <textarea name="content" id="content" cols="30" rows="10"></textarea>
+    </div>
+
+    <div>
+        <button type="submit">Send</button>
+    </div>
+</form>
+
+<div th:each="note : ${notes}" style="margin-top: 30px;">
+    <div th:text="'id: ' + ${note.id}"></div>
+    <div th:text="'Title: ' + ${note.title}"></div>
+    <br> <!-- Додаємо проміжок між віконцями Title і Content -->
+    <div th:text="'Content: ' + ${note.content}"></div>
+    <form th:action="@{/note/edit}" method="get">
+        <input type="hidden" name="id" th:value="${note.id}" />
+        <button type="submit">Edit</button>
+    </form>
+    <form th:action="@{/note/delete}" method="post">
+        <input type="hidden" name="id" th:value="${note.id}" />
+        <button type="submit">Delete</button>
+    </form>
+</div>
+
+</body>
+</html>
