@@ -26,7 +26,7 @@
 <div th:each="note : ${notes}" style="margin-top: 30px;">
     <div th:text="'id: ' + ${note.id}"></div>
     <div th:text="'Title: ' + ${note.title}"></div>
-    <br> <!-- Додаємо проміжок між віконцями Title і Content -->
+    <br>
     <div th:text="'Content: ' + ${note.content}"></div>
     <form th:action="@{/note/edit}" method="get">
         <input type="hidden" name="id" th:value="${note.id}" />
