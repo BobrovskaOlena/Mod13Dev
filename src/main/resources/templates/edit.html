@@ -1,27 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Edit Note</title>
+    <style>
+        body {
+            background-color: #c1f1e6;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #20c997;
+            text-align: center;
+            font-style: italic;
+        }
+
+        form > div {
+            margin-top: 20px;
+        }
+        button[type="submit"] {
+            font-size: 15px;
+            background-color: #20c997;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #128c76;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
-<h1>Edit Note</h1>
-<form th:action="@{/note/edit}" method="post">
+    <h1>Edit Note</h1>
+    <form th:action="@{/note/edit}" method="post">
     <input type="hidden" name="id" th:value="${editNote.id}" />
 
-    <div style="display: flex; flex-direction: column;">
+    <div>
         <label for="title">Title:</label>
         <input type="text" name="title" id="title" th:value="${editNote.title}" />
     </div>
 
-    <div style="margin-top: 20px; display: flex; flex-direction: column;">
+    <div>
         <label for="content">Content:</label>
         <textarea name="content" id="content" cols="15" rows="7" th:text="${editNote.content}"></textarea>
     </div>
 
-    <div style="margin-top: 40px;">
-        <button type="submit" style="font-size: 15px;">Edit</button>
+    <div>
+        <button type="submit">Edit</button>
     </div>
 </form>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </html>
